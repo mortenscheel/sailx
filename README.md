@@ -1,5 +1,5 @@
 # What is it?
-Sailx is a shell script that _extends_ the default laravel sail command.
+Sailx is a shell script that wraps the default laravel sail command and adds extra features.
 
 # Features
 - Can be run from any subfolder in your Laravel project.
@@ -10,13 +10,13 @@ Sailx is a shell script that _extends_ the default laravel sail command.
 # Shorthand commands
 | Command | Description |
 | ------- | ----------- |
-| `install\|i` | Runs composer install and npm ci |
-| `require vendor/package` | Install package with composer |
-| `dev\|watch\|hot\|production` | Runs the npm script in package.json |
-| `some:command` | As long as the first argument contains a colon, it will be interpreted as an artisan command. |
-| `tail` | Tails all log files in storage/logs |
-| `xdebug on\|off\|status` | Completely loads/unloads xdebug very quickly |
-| `root {command}` | Run command as root in the container |
+| `sail [i\|install]` | Runs composer install and npm ci |
+| `sail [r\|require] vendor/package` | Install package with composer |
+| `sail [dev\|watch\|hot\|production]` | Runs the npm script in package.json |
+| `sail some:command` | As long as the first argument contains a colon, it will be interpreted as an artisan command. |
+| `sail tail` | Tails all log files in storage/logs |
+| `sail xdebug [on\|off\|status]` | Completely loads/unloads xdebug very quickly |
+| `root [command]` | Run command as root in the container |
 | `anything else` | Will run as a bash command in the container
 
 # Installation
