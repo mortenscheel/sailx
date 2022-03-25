@@ -14,18 +14,18 @@ find_project() {
 }
 
 sail_run() {
-    pushd "$dir" >/dev/null
+    pushd "$dir" >/dev/null || return 1
     ./vendor/bin/sail "$@"
     exit_code=$?
-    popd >/dev/null
+    popd >/dev/null || return 1
     return $exit_code
 }
 
 sail_run_root() {
-    pushd "$dir" >/dev/null
+    pushd "$dir" >/dev/null || return 1
     docker-compose exec -u root "${APP_SERVICE:-laravel.test}" bash -c "$*"
     exit_code=$?
-    popd >/dev/null
+    popd >/dev/null || return 1
     return $exit_code
 }
 
@@ -40,7 +40,9 @@ should_proxy() {
 }
 
 dir="$(find_project)"
+# shellcheck disable=SC2181
 [ $? -ne 0 ] && echo "Sail not found" && exit 1
+# shellcheck disable=SC1091
 source "$dir/.env"
 
 # Proxy all sail and docker-compose commands
