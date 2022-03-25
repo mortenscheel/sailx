@@ -58,7 +58,7 @@ else
         shift
         sail_run composer install "$@" && sail_run npm ci
         ;;
-    require)
+    r | require)
         shift
         sail_run composer require "$@"
         ;;
